@@ -3,6 +3,8 @@ import "./App.css";
 
 import IdeaForm from "./components/IdeaForm";
 import ProposalResult from "./components/ProposalResult";
+import Loading from "./components/Loading";
+import { generateProposal } from "./api";
 
 function App() {
   const [idea, setIdea] = useState("");
@@ -24,7 +26,7 @@ function App() {
       setProposal(null);
 
       const data = await generateProposal(idea);
-      setProposal(data);
+      setProposal(data.proposal);
     } catch (err) {
       setError("Something went wrong. Please try again.");
     } finally {
@@ -52,9 +54,7 @@ function App() {
       {loading && <Loading />}
 
       <ProposalResult proposal={proposal} />
-    
-
-      </main>
+    </main>
   );
 }
 

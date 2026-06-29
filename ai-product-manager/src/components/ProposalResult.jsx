@@ -19,6 +19,7 @@ function Section({ title, children }) {
 }
 
 function ProposalResult({ proposal }) {
+  console.log("ProposalResult received proposal:", proposal);
   if (!proposal) return null;
 
   return (
